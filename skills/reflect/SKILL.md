@@ -25,7 +25,7 @@ Read the first lines of each candidate. Take the file whose opening user message
 
 One message, three `spawn_subagent` calls, omit `subagent_type`, the default tool set. Do not pass a readonly flag. Reviewers need MCP, which stays available through `search_tool` and `use_tool`.
 
-Each reviewer and the synthesizer name a role line in the `pstack-models.md` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If `spawn_subagent` has no `model` argument, omit it so the child inherits the parent. If it rejects a slug, use the closest slug from `grok models` and say so. Use the role slug from the Subagents section of the **poteto-mode** skill. Do not invent an effort suffix.
+Each reviewer and the synthesizer name a role line in the `pstack-models.md` rule and a default. Set `model` to that line's value, or to the default if the rule or the line is missing. Leave `model` unset when the value is `auto` or `inherit-parent`. If `spawn_subagent` has no `model` argument, omit it for this session so the child inherits the parent, and apply step 1 of **setup-pstack** so the next session can pass `model`. If it rejects a slug, use the closest slug from `grok models` and say so. Use the role slug from the Subagents section of the **poteto-mode** skill. Do not invent an effort suffix.
 
 | Lens | Role line | Default `model` | Prompt template |
 |---|---|---|---|

@@ -104,7 +104,7 @@ Ask for or confirm:
 - Polling and effort budgets
 - Model slug for triage, repro, code work, and media review
 
-Use only model slugs from `grok models`. Do not guess a slug and do not carry over a private default. If `spawn_subagent` has no `model` argument, omit `model` so the child inherits the parent.
+Use only model slugs from `grok models`. Do not guess a slug and do not carry over a private default. If `spawn_subagent` has no `model` argument, omit `model` for this session so the child inherits the parent, and apply step 1 of setup-pstack so the next session can pass `model`.
 
 The source channel, triage identity, repository, tracker adapter, control skill, and feature map must be explicit. Fail setup if any required value stays ambiguous.
 

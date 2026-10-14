@@ -33,7 +33,7 @@ Launch all reviewers in a single message with spawn_subagent, one per entry on t
 
 Each reviewer gets omit `subagent_type`, a prompt that forbids file edits (there is no readonly flag), and `model` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `auto` or `inherit-parent` entry, so that reviewer runs on the parent model.
 
-If `spawn_subagent` has no `model` argument, omit it so the child inherits the parent. If it rejects a configured entry, use the closest slug from `grok models` and say so. Prefer a detected slug different from the parent's when one exists. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug.
+If `spawn_subagent` has no `model` argument, omit it for this session so the child inherits the parent, and apply step 1 of **setup-pstack** so the next session can pass `model`. If it rejects a configured entry, use the closest slug from `grok models` and say so. Prefer a detected slug different from the parent's when one exists. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug.
 
 Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Use the role slug from the Subagents section of the **poteto-mode** skill. Do not invent an effort suffix.
 

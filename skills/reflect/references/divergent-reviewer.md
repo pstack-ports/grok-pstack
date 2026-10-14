@@ -18,7 +18,7 @@ Scan for:
 
 ## Scope to skills and tools the session actually used
 
-Route findings only to skills, tools, or MCPs this transcript used. A skill counts as used when the transcript shows a `Read` of its `SKILL.md` (under `.grok/skills/`, `~/.grok/skills/`, or `~/.grok/plugins/`), a `spawn_subagent` prompt naming its path, or a tool call (Shell, Grep, MCP, etc.) matching its documented commands. Speculative routings to skills the parent never opened do not count.
+Route findings only to skills, tools, or MCPs this transcript used. A skill counts as used when the transcript shows a `read_file` of its `SKILL.md` (a `Read` title counts) under `.grok/skills/`, `~/.grok/skills/`, or `~/.grok/plugins/`, a `spawn_subagent` prompt naming its path, or a tool call (`run_terminal_command`, `grep`, `list_dir`, `search_tool`, `use_tool`, or the same call under a Shell, Grep, or Glob title) matching its documented commands. Speculative routings to skills the parent never opened do not count.
 
 Two finding shapes are valid:
 - The parent invoked the skill and you found a real gap in its body. Route to the skill's relevant section.
