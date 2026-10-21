@@ -17,7 +17,6 @@ Grok confirms the plugin is installed. You can also enable it for one repo with 
 enabled = ["pstack"]
 ```
 
-
 ## Pick your models
 
 Run:
