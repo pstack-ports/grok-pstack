@@ -31,7 +31,7 @@ Keep (durable patterns):
 - "closed regex enums for trigger detection are brittle. Prefer schema-validated structures"
 - "skill descriptions front-load trigger keywords (60/40 trigger-vs-action)"
 - "skill-bundled scripts run under bun with own lockfile, not pnpm workspace"
-- "file-type triggers belong in the skill description. Grok Build does not read a skill paths field"
+- "path-shaped triggers belong in `paths:`, not description prose"
 
 Output exactly the format below. No preamble, no narration. One sentence per cell. A reviewer should read each Problem/Proposal pair in 5 seconds.
 
