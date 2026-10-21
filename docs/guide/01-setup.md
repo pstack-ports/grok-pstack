@@ -17,8 +17,6 @@ Grok confirms the plugin is installed. You can also enable it for one repo with 
 enabled = ["pstack"]
 ```
 
-In Claude Code, run `/plugin marketplace add cursor/plugins`, then `/plugin install pstack@cursor-plugins`. Claude Code prefixes plugin commands, so each command in this guide takes a `pstack:` prefix there, such as `/pstack:setup-pstack`, which writes its model rule to `~/.claude/rules/pstack-models.md`. The [Claude Code adapter](../harness/claude-code.md) covers the other differences.
-
 ## Pick your models
 
 Run:
