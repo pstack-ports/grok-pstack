@@ -1,4 +1,4 @@
-Grok Build port of [pstack](https://github.com/cursor/plugins/tree/4ec7ffa173eaa70d3d9467a627baf0954645a353/pstack) (`0.15.30`) by [Lauren Tan (poteto)](https://x.com/poteto), bundling `deslop`, `control-cli`, and `control-ui` from [cursor-team-kit](https://github.com/cursor/plugins/tree/4ec7ffa173eaa70d3d9467a627baf0954645a353/cursor-team-kit) (`1.2.0`) by Eric Zakariasson.
+Grok Build port of [pstack](https://github.com/cursor/plugins/tree/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/pstack) (`0.15.32`) by [Lauren Tan (poteto)](https://x.com/poteto), bundling `deslop`, `control-cli`, and `control-ui` from [cursor-team-kit](https://github.com/cursor/plugins/tree/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/cursor-team-kit) (`1.2.0`) by Eric Zakariasson.
 
 # pstack
 
@@ -129,6 +129,7 @@ to keep [`/poteto-mode`](./skills/poteto-mode/SKILL.md) on across turns, pick it
 | [`/why`](./skills/why/SKILL.md) | you want to know why something was built this way. discovers available MCPs at run time and queries each evidence category in parallel (source control, issue tracker, long-form docs, real-time chat, infra observability, error tracking, analytics warehouse). |
 | [`/recall`](./skills/recall/SKILL.md) | you're starting or resuming work and want your recent context on a topic rebuilt from your own chat history and the shared record, handed back as a tight current-state brief. |
 | [`/ketchup`](./skills/ketchup/SKILL.md) | you want what changed in this chat since your last message, in plain words and small visuals, with every item waiting on you listed and decidable from the reply alone, even when that makes the reply long. |
+| [`/ketchup-video`](./skills/ketchup-video/SKILL.md) | you want the `/ketchup` catch-up as a short silent video of slides, with the calls waiting on you as text under it. |
 | [`/blast-radius`](./skills/blast-radius/SKILL.md) | you have a small-looking change and want to know what else it could break, with the one fact it's safe because of proven by running code, not asserted. |
 | [`/architect`](./skills/architect/SKILL.md) | you're about to write code that crosses a function boundary and want the caller's usage, types, and module shape settled first. |
 | [`/arena`](./skills/arena/SKILL.md) | you want N parallel attempts at the same thing, then to grab the best parts of each. |
