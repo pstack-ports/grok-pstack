@@ -24,16 +24,16 @@ Before spawning reviewers, state the intent in one clear paragraph from the user
 
 ## Step 3, Spawn Reviewers
 
-Launch all reviewers in a single message with spawn_subagent, one per entry on the `interrogate reviewers` line in `~/.grok/rules/pstack-models.md`, labeled Reviewer A, B, and so on to match the entry count. If the rule or that line is missing, use the table defaults.
+Launch all reviewers in a single message with `spawn_subagent`, one per entry on the `interrogate reviewers` line in `~/.grok/rules/pstack-models.md`, labeled Reviewer A, B, and so on to match the entry count. If the rule or that line is missing, use the table defaults.
 
 | Subagent | Default model |
 |----------|---------------|
 | Reviewer A | `grok-4.6 xhigh` |
 | Reviewer B | `grok-4.5 high` |
 
-Each reviewer gets omit `subagent_type`, a prompt that forbids file edits (there is no readonly flag), and `model` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `auto` or `inherit-parent` entry, so that reviewer runs on the parent model.
+Each reviewer omits `subagent_type`, a prompt that forbids file edits (there is no readonly flag), and `model` set to its configured entry, or its table default when there is no configured line. Omit `model` for an `auto` or `inherit-parent` entry, so that reviewer runs on the parent model.
 
-If `spawn_subagent` has no `model` argument, omit it for this session so the child inherits the parent, and apply step 1 of **setup-pstack** so the next session can pass `model`. If it rejects a configured entry, use the closest slug from `grok models` and say so. Prefer a detected slug different from the parent's when one exists. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug.
+If `spawn_subagent` has no `model` argument, omit it for this session so the child inherits the parent, and apply step 1 of **setup-pstack** so the next session can pass `model`. If it rejects a configured entry, use the closest slug from `grok models` and say so, and open a separate PR to update the default table. Prefer a detected slug different from the parent's when one exists. Do not block the review on the slug issue. Never treat an alias entry as a rejected slug.
 
 Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens from `references/code-quality-review.md`. Pick each subagent's reasoning effort for the job, per the Subagents section.
 
