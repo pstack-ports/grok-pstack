@@ -24,7 +24,7 @@ Open a todolist with one entry per phase before launching anything.
 
 ## Phase B: Fan out
 
-Spawn all N workers in one message with omit `subagent_type`, `isolation: "worktree"`, `background: true`, and the step 3 model, left unset for `auto` or `inherit-parent`. Use `isolation: "none"` only when the worker needs the shared checkout. When a worker must start from a non-default branch, say that branch in the brief and have the worker check it out inside its worktree.
+Spawn all N workers in one message with no `subagent_type`, `isolation: "worktree"`, `run_in_background: true`, and the step 3 model, left unset for `auto` or `inherit-parent`. Use `isolation: "none"` only when the worker needs the shared checkout. When a worker must start from a non-default branch, say that branch in the brief and have the worker check it out inside its worktree.
 
 Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence. A worker that can prove a defect reports `ISSUES` and lists every issue it can prove, not only the first.
 
