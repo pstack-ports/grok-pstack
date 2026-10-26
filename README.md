@@ -1,4 +1,4 @@
-Grok Build port of [pstack](https://github.com/cursor/plugins/tree/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/pstack) (`0.15.32`) by [Lauren Tan (poteto)](https://x.com/poteto), bundling `deslop`, `control-cli`, and `control-ui` from [cursor-team-kit](https://github.com/cursor/plugins/tree/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/cursor-team-kit) (`1.2.0`) by Eric Zakariasson.
+Grok Build port of [pstack](https://github.com/cursor/plugins/tree/e73df471cd4bd918367e99f3dd9c51bd53ddf5f0/pstack) (`0.15.32`) by [Lauren Tan (poteto)](https://x.com/poteto).
 
 # pstack
 
