@@ -4,10 +4,10 @@ In this page you install the plugin, pick which models pstack uses, and run your
 
 ## Install the plugin
 
-From the plugin directory, run:
+Run:
 
 ```text
-grok plugin install . --trust && grok plugin enable pstack
+grok plugin install https://github.com/pstack-ports/grok-pstack --trust && grok plugin enable pstack
 ```
 
 Grok confirms the plugin is installed. You can also enable it for one repo with `.grok/config.toml`:
