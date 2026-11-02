@@ -43,7 +43,7 @@ that's it. the other skills are situational, and the mode skill uses them for yo
 
 use [`/poteto-mode`](./skills/poteto-mode/SKILL.md) at the start of a task. it reads your request, picks from a set of playbooks, and runs the other skills as the steps need them.
 
-pick `/poteto-mode` from the `/` menu before you type your task, so cursor attaches the skill to the message.
+type `/poteto-mode` and the task in one message.
 
 ### just use [`/poteto-mode`](./skills/poteto-mode/SKILL.md)
 
