@@ -13,7 +13,7 @@ Write `~/.grok/rules/pstack-models.md`. Every markdown file in `~/.grok/rules/` 
 
 Run `grok models` and read the `spawn_subagent` schema. The slugs `grok models` lists are the only real slugs you may write. Read each model's effort levels from `grok models` / `/model`. If you cannot detect any slug, ask the user to paste the slugs they have access to. Never write a real slug you have not confirmed. The aliases `inherit-parent` and `auto` are always valid even though they are not detected slugs. Both mean omit `model`.
 
-When `spawn_subagent` lists `model`, pass it. When it does not, this session inherits the parent. Expose the argument for the next session before you finish setup:
+When `spawn_subagent` lists `model`, pass only the model id (`grok-4.6` from a `grok-4.6 xhigh` line), validated against `grok models`. When it does not, this session inherits the parent. Expose the argument for the next session before you finish setup:
 
 - Leave the user config alone when `GROK_SUBAGENT_MODEL_INHERITANCE` is set, when `GROK_CONFIG` or `GROK_CONFIG_PATH` sets `features.subagent_model_inheritance`, or when `$GROK_HOME/requirements.toml` (default `~/.grok/requirements.toml`), `/etc/grok/requirements.toml`, or an MDM profile pins that key. Name the pin in the confirmation. This session omits `model`.
 - Otherwise set `subagent_model_inheritance = false` under `[features]` in `$GROK_HOME/config.toml` (default `~/.grok/config.toml`). Preserve every other key and table. An explicit false overrides the remote default. The flag is read at session start, so this session still omits `model`.
@@ -39,7 +39,7 @@ The default role-to-model mapping is the rule shape shown in step 5 below. If `~
 
 ### 4. Validate
 
-Every real slug written must be in the detected set. `inherit-parent` and `auto` always pass. If a chosen real slug is not available, stop and ask again.
+Every real model id written must be in the detected set. The effort word after the id is not a slug. `inherit-parent` and `auto` always pass. If a chosen real model id is not available, stop and ask again.
 
 ### 5. Write the rule
 
