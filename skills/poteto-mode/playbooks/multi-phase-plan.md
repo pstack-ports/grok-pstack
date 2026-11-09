@@ -35,7 +35,7 @@ Tests alone are not sufficient verification. A PR is verified only when its unit
 - [ ] Read these from the installed pstack plugin dir at program start. Re-read them at every tick.
   - [ ] `<plugin>/skills/poteto-mode/playbooks/<execution playbook>.md`
   - [ ] `<plugin>/skills/swarm/SKILL.md`
-  - [ ] `<plugin>/<control skill path>`
+  - [ ] `git show origin/main:<control skill path>`
   - [ ] `<plugin>/skills/poteto-mode/playbooks/opening-a-pr.md`
   - [ ] `<plugin>/skills/<each other leaf skill the program uses>`
 - [ ] On the operator's go, arm the audit tick as `/loop 1h` with the tick prompt below. Never leave the cadence to memory.
