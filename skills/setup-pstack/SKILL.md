@@ -22,7 +22,9 @@ Pass `model` only in a session whose schema includes it. Pass the effort only wh
 
 ### 2. Load current state
 
-The default role-to-model mapping is the rule shape shown in step 5 below. If `~/.grok/rules/pstack-models.md` already exists, read it and treat its `# budget` line and its role values as the current choices. Otherwise start from those defaults. A line whose role is not in step 5, such as `how critics`, is from a retired role. Drop it.
+The default role-to-model mapping is the rule shape shown in step 5 below. If `~/.grok/rules/pstack-models.md` already exists, read it and treat its `# budget` line and its role values as the current choices. Otherwise start from those defaults. A line whose role is not in step 5, such as `how explorer` or `why investigators`, is from a retired role. Drop it.
+
+A rule without the `# defaults: 2` line comes from an older setup. That setup wrote lines for `how explorer`, `how explainer`, `why investigators`, and `why synthesizer`. Drop those lines. Do not replace a `grok-*` slug. Every other value is the user's choice and stays, including every `inherit-parent` or `auto` value. Tell the user which lines you dropped.
 
 ### 3. Budget, map, and confirm
 
@@ -33,7 +35,7 @@ The default role-to-model mapping is the rule shape shown in step 5 below. If `~
 - `medium — high reasoning`
 - `small — medium reasoning`
 
-**(b) Apply it.** Build the working table from the skill defaults, and on a re-run keep any role you changed by slug, list, or alias (`inherit-parent`, `auto`). `unlimited`, `large`, `medium`, and `small` set the effort of every real model entry, panel entries included, to `max`, `xhigh`, `high`, or `medium`, on the ladder `max` > `xhigh` > `high` > `medium` > `low`. Effort is a separate field, written after the model id (`grok-4.6 xhigh`). If the model does not offer that effort, use its highest offered effort at or below the target, else mark the role as needing a choice. `inherit-parent` and `auto` do not change. So on grok 1.0.62, `unlimited` keeps `grok-4.6` at `xhigh`, `large` keeps the defaults, and `small` turns them into `grok-4.6 medium` and `grok-4.5 medium`. A panel list stays two entries when two different detected slugs exist. When the budget collapses a panel onto one slug, write that slug twice and tell the user the panel has no second model. If `spawn_subagent` has no `model` argument, still write the intended slugs. They take effect in the next session, after step 1 exposes `model`.
+**(b) Apply it.** Build the working table from the skill defaults, and on a re-run keep any role you changed by slug, list, or alias (`inherit-parent`, `auto`). Each entry has a target effort, which is its default's effort moved by the budget. `large` keeps it, `unlimited` raises it one step, `medium` lowers it one step, and `small` lowers it two steps, on the ladder `max` > `xhigh` > `high` > `medium` > `low`. A target at either end of the ladder stays there. Most defaults are at `xhigh`, and each budget label names where those land. Set the effort of every real model entry in the role, panel entries included, to that entry's target. Effort is a separate field, written after the model id (`grok-4.6 xhigh`). If the model does not offer that effort, use its highest offered effort at or below the target, else mark the role as needing a choice. `inherit-parent` and `auto` do not change. So `unlimited` turns `grok-4.6 xhigh` into `grok-4.6 max` when `max` is offered, and otherwise keeps `xhigh`. `large` keeps the defaults. `small` turns `grok-4.6 xhigh` into `grok-4.6 medium` and `grok-4.5 high` into `grok-4.5 low`. A panel list stays two entries when two different detected slugs exist. When the budget collapses a panel onto one slug, write that slug twice and tell the user the panel has no second model. If `spawn_subagent` has no `model` argument, still write the intended slugs. They take effect in the next session, after step 1 exposes `model`.
 
 **(c) Show the roles and confirm.** Show every role with its model, marking any real slug not in the detected set as needing a choice. Also list each line step 2 dropped. Ask whether to accept as-is or change specific roles, offering the detected models plus `inherit-parent` and `auto` (both mean this role runs on the parent chat model, so omit `model`) as the options. Prefer ask_user_question over free text. For panel roles (arena runners, architect runners, interrogate reviewers) the value is a list, and one subagent runs per entry, alias entries included, so the list length sets the count. `arena cross-judge pool` is also a list, but Arena runs one judge. It tries only values on a detected slug other than the parent's, in list order, so order it by preference. An `inherit-parent` or `auto` value never judges. `swarm workers` is the default model for every worker unless a race or comparison assigns another model per arm.
 
@@ -43,12 +45,13 @@ Every real model id written must be in the detected set. The effort word after t
 
 ### 5. Write the rule
 
-Write `~/.grok/rules/pstack-models.md` as plain Markdown. No YAML frontmatter. Include a `# budget` line and one line per role, using the same labels poteto-mode uses. Overwrite the whole file so re-runs stay idempotent. Shape for `large` when `grok-4.6` and `grok-4.5` are detected:
+Write `~/.grok/rules/pstack-models.md` as plain Markdown. No YAML frontmatter. Include the `# defaults: 2` line, a `# budget` line with the chosen label and the effort that label names, and one line per role, using the same labels poteto-mode uses. Overwrite the whole file so re-runs stay idempotent. Shape for `large` when `grok-4.6` and `grok-4.5` are detected:
 
 ```
 # pstack model configuration. One line per role. Delete a line to fall back to the skill default.
 # `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit `model`). Alias entries in a panel list still count toward its fan-out.
 # Pass model only when spawn_subagent lists it. Step 1 exposes that argument for the next session.
+# defaults: 2
 # budget: large (xhigh)
 feature, refactoring: grok-4.6 xhigh
 bug-fix: grok-4.6 xhigh
@@ -56,10 +59,6 @@ perf-issue: grok-4.6 xhigh
 hillclimb: grok-4.6 xhigh
 judgment and prose: grok-4.6 xhigh
 hardest tasks: grok-4.6 xhigh
-how explorer: grok-4.6 xhigh
-how explainer: grok-4.6 xhigh
-why investigators: grok-4.6 xhigh
-why synthesizer: grok-4.6 xhigh
 reflect tooling: grok-4.6 xhigh
 reflect judgment, divergent, synthesizer: grok-4.6 xhigh
 arena runners: grok-4.6 xhigh, grok-4.5 high
