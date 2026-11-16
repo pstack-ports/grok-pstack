@@ -42,7 +42,6 @@ Preserve every unrelated setting. If `pstack` is already in `enabled`, leave it.
 
 Reload the target project or start a fresh agent rooted there. Verify that these shared pstack skills resolve from project scope:
 
-- `how`
 - `why`
 - `tdd`
 - `unslop`
