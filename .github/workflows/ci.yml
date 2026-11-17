@@ -249,14 +249,21 @@ jobs:
               if (!indexedPrinciples.has(p)) fail(`skills/${p} is not indexed in skills/poteto-mode/SKILL.md`);
             }
 
+            const diskPlaybooks = new Set(readdirSync("skills/poteto-mode/playbooks").filter((f) => f.endsWith(".md")));
             const indexedPlaybooks = new Set();
             for (const line of playbooksSection.split(/\r?\n/)) {
               const m = line.match(/^- \*\*([^*]+?)\.\*\*(?:.*?File: `playbooks\/([^`]+)`)?/);
               if (m) {
                 indexedPlaybooks.add(m[2] ?? `${toKebab(m[1])}.md`);
+                continue;
+              }
+              const trimmed = line.trim().replace(/\.$/, "");
+              if (!trimmed.includes(", ") || trimmed.includes("`")) continue;
+              const names = trimmed.split(",").map((part) => `${toKebab(part.trim())}.md`);
+              if (names.length > 1 && names.every((name) => diskPlaybooks.has(name))) {
+                for (const name of names) indexedPlaybooks.add(name);
               }
             }
-            const diskPlaybooks = new Set(readdirSync("skills/poteto-mode/playbooks").filter((f) => f.endsWith(".md")));
             for (const pb of indexedPlaybooks) {
               if (!diskPlaybooks.has(pb)) fail(`skills/poteto-mode/SKILL.md references missing playbook "playbooks/${pb}"`);
             }
