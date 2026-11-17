@@ -1,4 +1,4 @@
-Grok Build port of [pstack](https://github.com/cursor/plugins/tree/bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7/pstack) (`0.15.42`) by [Lauren Tan (poteto)](https://x.com/poteto).
+Grok Build port of [pstack](https://github.com/cursor/plugins/tree/2f87c854fe3e2fcda44ca86b46ede35aad3c46b7/pstack) (`0.15.43`) by [Lauren Tan (poteto)](https://x.com/poteto).
 
 # pstack
 
@@ -37,7 +37,7 @@ two steps:
 
 new here? the [pstack guide](./docs/guide/README.md) walks you through a first real task, from setup and prompting through verification and overnight runs. stuck, or unsure which skill fits? ask [`/poteto-help`](./skills/poteto-help/SKILL.md).
 
-that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box every role defaults to `grok-4.6` at `xhigh`. the default panel is `grok-4.6 xhigh` / `grok-4.5 high`. [`/setup-pstack`](./skills/setup-pstack/SKILL.md) changes any of it.
+that's it. the other skills are situational, and the mode skill uses them for you as needed. out of the box every role defaults to `grok-4.6` at `xhigh`, and no role runs above `xhigh`. the default panel is `grok-4.6 xhigh` / `grok-4.5 high`. [`/setup-pstack`](./skills/setup-pstack/SKILL.md) changes any of it.
 
 ## usage
 
@@ -47,7 +47,7 @@ type `/poteto-mode` and the task in one message.
 
 ### just use [`/poteto-mode`](./skills/poteto-mode/SKILL.md)
 
-this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with twenty-three playbooks:
+this skill is the main shortcut. i use it whenever i need the agent to do rigorous engineering work. it comes with twenty-two playbooks:
 
 ```
 /poteto-mode this pr has a subtle bug where the scroll drifts every 750ms even when idle. repro
@@ -60,7 +60,7 @@ morning.
 ```
 
 <details>
-<summary>the twenty-three playbooks</summary>
+<summary>the twenty-two playbooks</summary>
 
 | playbook | for |
 |---|---|
@@ -79,7 +79,6 @@ morning.
 | [babysit](./skills/poteto-mode/playbooks/babysit.md) | drive a pr or a stack to merge-ready: conflicts, review threads, ci. |
 | [shipping](./skills/poteto-mode/playbooks/shipping.md) | independently verify a green stack, then land the contiguous verified run bottom-up through github by default or origin when available. |
 | [autonomous run](./skills/poteto-mode/playbooks/autonomous-run.md) | drive a long task to completion without stopping. |
-| [orchestrate](./skills/poteto-mode/playbooks/orchestrate.md) | a standing project handed to one coordinator chat: multi-day, many stacked prs, fleets of subagents. |
 | [autopilot-full](./skills/poteto-mode/playbooks/autopilot-full.md) | run independent prs to merged with one owner per pr. a swarm verifies each code-ready head, and every later change to the patch gets a fresh check. |
 | [autopilot-stack](./skills/poteto-mode/playbooks/autopilot-stack.md) | autopilot-full without the merge. build and verify prs for the operator to review and land, stacking a pr only on a pr it builds on. |
 | [session pickup](./skills/poteto-mode/playbooks/session-pickup.md) | resume or take over a prior agent's in-flight work. |
@@ -269,7 +268,7 @@ type [`/automate-me`](./skills/automate-me/SKILL.md). it mines your recent trans
 
 models are configurable too. type [`/setup-pstack`](./skills/setup-pstack/SKILL.md). it detects the models you have access to and writes a small always-applied rule mapping each role (code, judgment, the review panels) to a model. every skill reads it and falls back to sensible defaults when the rule is absent, so you override only what you want.
 
-when a default changes, a rule written before the change still pins the old default until you run `/setup-pstack` again. that run drops retired roles it recognizes, such as `how explorer` and `why investigators`, and keeps any other role whose model differs from the default, including every `grok-*` slug. to drop a pin it does not recognize, delete that role's line or the file first.
+when a default changes, a rule written before the change still pins the old default until you run `/setup-pstack` again. that run drops retired roles it recognizes, such as `how explorer`, `why investigators`, `hardest tasks`, `architect runners`, `reflect tooling`, and `reflect judgment, divergent, synthesizer`, and keeps any other role whose model differs from the default, including every `grok-*` slug. to drop a pin it does not recognize, delete that role's line or the file first.
 
 ## automations
 
