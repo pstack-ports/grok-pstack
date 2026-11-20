@@ -1,4 +1,4 @@
-Grok Build port of [pstack](https://github.com/cursor/plugins/tree/2f87c854fe3e2fcda44ca86b46ede35aad3c46b7/pstack) (`0.15.43`) by [Lauren Tan (poteto)](https://x.com/poteto).
+Grok Build port of [pstack](https://github.com/cursor/plugins/tree/0b46ec399d55f2829e88822998f53b84944837d3/pstack) (`0.15.46`) by [Lauren Tan (poteto)](https://x.com/poteto).
 
 # pstack
 
